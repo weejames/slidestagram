@@ -1,20 +1,20 @@
 module.exports = {
-    devtool: 'source-map',
-    entry: ['./src/app'],
+    entry: './src/app.js',
     output: {
-        path: 'dist',
-        filename: 'app.js'
-    },
-    resolve: {
-        extensions: ['', '.ts', '.tsx']
+        filename: 'application.js',
+        path: './dist'
     },
     module: {
-        loaders: [
+        rules: [
             {
-                test: /\.tsx?$/,
-                exclude: /node_modules/,
-                loaders: ['ts-loader']
+                test: /\.js$/,
+                use: [{
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['es2015']
+                    }
+                }],
             }
         ]
     }
-};
+}
